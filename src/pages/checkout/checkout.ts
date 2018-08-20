@@ -292,7 +292,7 @@ export class CheckoutPage {
     }
     if(this.Parcel == true){
       let shipping_rate: any = Math.ceil(((parseFloat(this.sub_total) - parseFloat(this.discount) + parseFloat(this.GST)) / 5000));
-      this.shipping = (parseFloat(shipping_rate) *  60); //parseFloat(Math.ceil(parseFloat(this.sub_total-this.discount+this.GST)/5000)*60);
+      this.shipping = (parseFloat(shipping_rate) *  100  /*Parcel rate*/); //parseFloat(Math.ceil(parseFloat(this.sub_total-this.discount+this.GST)/5000)*60);
       if(this.GST_option[this.total_item] == true){
         this.GST = parseFloat(((this.shipping * 18) / 100) + this.GST);
       }
