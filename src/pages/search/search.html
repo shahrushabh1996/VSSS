@@ -1,0 +1,45 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'Search' | translate }} <button icon-only style="background-color: transparent; float: right" (click)="root_page()"> <ion-icon name="home"></ion-icon> </button></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-grid>
+		<ion-row style="background: #2874f0;" class="search_header">
+			<ion-col col-10>
+				<!--<ion-auto-complete [dataProvider]="autoSuggestProvider"></ion-auto-complete>-->
+				<ion-searchbar #input [(ngModel)]="searchTerm" (ionInput)="apply_search()" [debounce]="1000"></ion-searchbar>
+			</ion-col>
+			<ion-col col-2 style="position: relative;" (click)="page_redirect('CheckoutPage')">
+				<ion-icon name="cart" style="font-size: 42px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></ion-icon>
+				<div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+					<li>
+						<a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{cart_item}}</a>
+					</li>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row class="basic_top_margin">
+			<ion-col>
+				<ion-list inset>
+					<button ion-item class="capitalize"(click)="open('', '')" style="padding-left: 0px">
+						{{"Search: '"+searchTerm.toLowerCase()+"'"}}
+					</button>
+					<button ion-item class="capitalize" *ngFor="let item of Items" (click)="open(item.ID, item.Type)" style="padding-left: 0px">
+					    {{item.Name.toLowerCase()}}
+					</button>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+  </ion-grid>
+</ion-content>

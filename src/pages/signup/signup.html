@@ -1,0 +1,187 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+
+</ion-header>
+
+
+<ion-content class="masters signup" padding>
+  <ion-grid class="signup" *ngIf="this.Loader == 1">
+    <ion-row>
+        <ion-col text-center>
+          <ion-spinner name="crescent" color="white_color"></ion-spinner>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-grid class="signup" *ngIf="this.Loader != 1">
+    <ion-row>
+      <ion-col text-center>
+        <h4 style="color: #fff;font-size: 24px">Signup (નવું એકાઉન્ટ બનાવો)(* Fields are only compulsory)(* નિશાની વાળી વિગતો જ ફક્ત ફરજીયાત છે.)</h4>
+      </ion-col>
+    </ion-row>
+    <form (ngSubmit)="submit_form()">
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['name']['color']">{{this.signup['name']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['name']['color']" [(ngModel)]="this.signup['name']['value']" name="name"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['mobile']['color']">{{this.signup['mobile']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['mobile']['color']" [(ngModel)]="this.signup['mobile']['value']" (ionBlur)="check_mobile()" name="mobile"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['email']['color']">{{this.signup['email']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['email']['color']" [(ngModel)]="this.signup['email']['value']" (ionBlur)="check_email()" name="email" type="email"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['GST_Number']['color']">{{this.signup['GST_Number']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['GST_Number']['color']" [(ngModel)]="this.signup['GST_Number']['value']" name="GST_Number"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['transport_name']['color']">{{this.signup['transport_name']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['transport_name']['color']" [(ngModel)]="this.signup['transport_name']['value']" name="transport_name"></ion-input>
+      		</ion-item>
+        </ion-col>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['transport_mobile']['color']">{{this.signup['transport_mobile']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['transport_mobile']['color']" [(ngModel)]="this.signup['transport_mobile']['value']" name="transport_mobile"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['address_1']['color']">{{this.signup['address_1']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['address_1']['color']" [(ngModel)]="this.signup['address_1']['value']" name="address_1"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['address_2']['color']">{{this.signup['address_2']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['address_2']['color']" [(ngModel)]="this.signup['address_2']['value']" name="address_2"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+              <select-searchable [(ngModel)]="this.signup['City']['value']" name="City" [items]="cities" itemValueField="ID" itemTextField="Name" [canSearch]="true" (onChange)="select_state('City')">
+                <ng-template selectSearchableLabelTemplate> {{this.signup['City']['label']}} </ng-template>
+              </select-searchable>
+            <!--<ion-label floating [color]="this.signup['City']['color']">{{this.signup['City']['label']}}</ion-label>
+            <ion-select [color]="this.signup['City']['color']" [(ngModel)]="this.signup['City']['value']" name="City" (ionChange)="select_state('City')">
+              <ion-option *ngFor="let city of cities;" value="{{ city.ID }}">{{ city.Name.toLowerCase() }}</ion-option>
+            </ion-select>-->
+          </ion-item>
+        </ion-col>
+        <ion-col text-center>
+            <ion-item style="padding: 0">
+              <select-searchable [(ngModel)]="this.signup['State']['value']" name="State" [items]="states" itemValueField="ID" itemTextField="Name" [canSearch]="true">
+                <ng-template selectSearchableLabelTemplate> {{this.signup['State']['label']}} </ng-template>
+              </select-searchable>
+            </ion-item>
+          <!--<ion-item color="primary">
+            <ion-label floating [color]="this.signup['State']['color']">{{this.signup['State']['label']}}</ion-label>
+            <ion-select [color]="this.signup['State']['color']" [(ngModel)]="this.signup['State']['value']" name="State">
+              <ion-option *ngFor="let state of states;" value="{{ state.ID }}" class="capitilize">{{ state.Name.toLowerCase() }}</ion-option>
+            </ion-select>
+          </ion-item>-->
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['shipping_address_1']['color']">{{this.signup['shipping_address_1']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['shipping_address_1']['color']" [(ngModel)]="this.signup['shipping_address_1']['value']" name="shipping_address_1"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['shipping_address_2']['color']">{{this.signup['shipping_address_2']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['shipping_address_2']['color']" [(ngModel)]="this.signup['shipping_address_2']['value']" name="shipping_address_2"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+              <select-searchable [(ngModel)]="this.signup['shipping_city']['value']" name="shipping_city" [items]="cities" itemValueField="ID" itemTextField="Name" [canSearch]="true" (onChange)="select_state('shipping_city')">
+                <ng-template selectSearchableLabelTemplate> {{this.signup['shipping_city']['label']}} </ng-template>
+              </select-searchable>
+            <!--<ion-label floating [color]="this.signup['shipping_city']['color']">{{this.signup['shipping_city']['label']}}</ion-label>
+            <ion-select [color]="this.signup['shipping_city']['color']" [(ngModel)]="this.signup['shipping_city']['value']" name="shipping_city" (ionChange)="select_state('shipping_city')">
+              <ion-option *ngFor="let city of cities;" value="{{ city.ID }}">{{ city.Name.toLowerCase() }}</ion-option>
+            </ion-select>-->
+          </ion-item>
+        </ion-col>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+              <select-searchable [(ngModel)]="this.signup['shipping_state']['value']" name="shipping_state" [items]="states" itemValueField="ID" itemTextField="Name" [canSearch]="true">
+                <ng-template selectSearchableLabelTemplate> {{this.signup['shipping_state']['label']}} </ng-template>
+              </select-searchable>
+            <!--<ion-label floating [color]="this.signup['shipping_state']['color']">{{this.signup['shipping_state']['label']}}</ion-label>
+            <ion-select [color]="this.signup['shipping_state']['color']" [(ngModel)]="this.signup['shipping_state']['value']" name="shipping_state">
+              <ion-option *ngFor="let state of states;" value="{{ state.ID }}" class="capitilize">{{ state.Name.toLowerCase() }}</ion-option>
+            </ion-select>-->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['password']['color']">{{this.signup['password']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['password']['color']" type="password" [(ngModel)]="this.signup['password']['value']" name="password"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.signup['confirm_password']['color']">{{this.signup['confirm_password']['label']}}</ion-label>
+      			<ion-input [color]="this.signup['confirm_password']['color']" type="password" [(ngModel)]="this.signup['confirm_password']['value']" name="confirm_password"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+        	<ion-item color="primary" no-lines>
+        		<button ion-button full color="secondary" type="submit">Signup (સાઇન અપ કરો)</button>
+        	</ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col text-center>
+        <p color="secondary" style="text-align: center;color: #fff">Login? (લૉગિન?) <b (click)="page_redirect('LoginPage')">Click here (અહીં ક્લિક કરો)</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

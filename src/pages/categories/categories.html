@@ -1,0 +1,74 @@
+<!--
+  Generated template for the CategoriesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	
+
+</ion-header>
+
+
+<ion-content [class]="this.ion_content">
+	<ion-grid class="signup" *ngIf="this.Loader == 1">
+	    <ion-row>
+	        <ion-col text-center>
+	          <ion-spinner name="crescent" color="white_color"></ion-spinner>
+	        </ion-col>
+	    </ion-row>
+	</ion-grid>
+	<ion-grid *ngIf="this.Loader != 1"  style=" background-color: #fff;">
+		<ion-row style="background: #2874f0;" class="search_header">
+			<ion-col col-10>
+				<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredCategory()"></ion-searchbar>
+			</ion-col>
+			<ion-col col-2 style="position: relative;" (click)="page_redirect('CheckoutPage')">
+				<ion-icon name="cart" style="font-size: 42px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></ion-icon>
+				<div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+					<li>
+						<a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{cart_item}}</a>
+					</li>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row class="basic_top_margin">
+			<ion-col>
+				<ion-segment [(ngModel)]="segment" color="primary" *ngIf="this.Loader != 1">
+			      <ion-segment-button value="Home" (click)="root_page()" text-center>
+			        {{ 'Home' | translate }}
+			      </ion-segment-button>
+			      <ion-segment-button value="Category" (click)="page_redirect('CategoriesPage')" text-center>
+			        {{ 'Category' | translate }}
+						</ion-segment-button>
+						<ion-segment-button value="Featured" (click)="page_redirect('FeaturedItemPage')" text-center>
+			        {{ 'All_item' | translate }}
+			      </ion-segment-button>
+			      <ion-segment-button  (click)="user_tab()" text-center>
+			        {{ 'User' | translate }}
+			      </ion-segment-button>
+			    </ion-segment>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-list inset>
+					<ion-item *ngFor="let category of search_categories" style="padding: 0px">
+							<ion-row>
+								<ion-col col-12>
+									<button class="capitalize"  (click)="sub_catgeory(category.ID)" style="font-size: 1.6rem; background-color: unset">
+										<b *ngIf="language == 'english'">{{ category.English_name.toLowerCase() }} ({{ category.Total }} Items)</b>
+										<b *ngIf="language == 'gujarati'">{{ category.Gujarati_name.toLowerCase() }} ({{ category.Total }} Items)</b>
+									</button>
+								</ion-col>
+								<!--<ion-col col-4>
+									<button style="float: right;padding: 6px;color: #fff; background-color: #2874f0; margin-bottom: 5px" (click)="download(category.ID)">Download</button>
+								</ion-col>-->
+							</ion-row>
+					</ion-item>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

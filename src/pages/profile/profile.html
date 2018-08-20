@@ -1,0 +1,154 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="masters signup" padding>
+  <ion-grid class="signup" *ngIf="this.Loader == 1">
+    <ion-row>
+        <ion-col text-center>
+          <ion-spinner name="crescent" color="white_color"></ion-spinner>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-grid class="signup" *ngIf="this.Loader != 1">
+    <ion-row>
+      <ion-col text-center>
+        <h4 style="color: #fff;font-size: 24px">Edit profile (પ્રોફાઈલ સુધારો)</h4>
+      </ion-col>
+    </ion-row>
+    <form (ngSubmit)="submit_form()">
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['name']['color']">{{this.profile['name']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['name']['color']" [(ngModel)]="this.profile['name']['value']" name="name"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['mobile']['color']">{{this.profile['mobile']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['mobile']['color']" [(ngModel)]="this.profile['mobile']['value']" (ionBlur)="check_mobile()" name="mobile"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['email']['color']">{{this.profile['email']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['email']['color']" [(ngModel)]="this.profile['email']['value']" (ionBlur)="check_email()" name="email" type="email"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['GST_Number']['color']">{{this.profile['GST_Number']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['GST_Number']['color']" [(ngModel)]="this.profile['GST_Number']['value']" name="GST_Number"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['transport_name']['color']">{{this.profile['transport_name']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['transport_name']['color']" [(ngModel)]="this.profile['transport_name']['value']" name="transport_name"></ion-input>
+      		</ion-item>
+        </ion-col>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['transport_mobile']['color']">{{this.profile['transport_mobile']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['transport_mobile']['color']" [(ngModel)]="this.profile['transport_mobile']['value']" name="transport_mobile"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['address_1']['color']">{{this.profile['address_1']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['address_1']['color']" [(ngModel)]="this.profile['address_1']['value']" name="address_1"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['address_2']['color']">{{this.profile['address_2']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['address_2']['color']" [(ngModel)]="this.profile['address_2']['value']" name="address_2"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+            <ion-label floating [color]="this.profile['City']['color']">{{this.profile['City']['label']}}</ion-label>
+            <ion-select [color]="this.profile['City']['color']" [(ngModel)]="this.profile['City']['value']" name="City" (ionChange)="select_state('City')">
+              <ion-option *ngFor="let city of cities;" value="{{ city.ID }}">{{ city.Name.toLowerCase() }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+            <ion-label floating [color]="this.profile['State']['color']">{{this.profile['State']['label']}}</ion-label>
+            <ion-select [color]="this.profile['State']['color']" [(ngModel)]="this.profile['State']['value']" name="State">
+              <ion-option *ngFor="let state of states;" value="{{ state.ID }}" class="capitilize">{{ state.Name.toLowerCase() }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['shipping_address_1']['color']">{{this.profile['shipping_address_1']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['shipping_address_1']['color']" [(ngModel)]="this.profile['shipping_address_1']['value']" name="shipping_address_1"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.profile['shipping_address_2']['color']">{{this.profile['shipping_address_2']['label']}}</ion-label>
+      			<ion-input [color]="this.profile['shipping_address_2']['color']" [(ngModel)]="this.profile['shipping_address_2']['value']" name="shipping_address_2"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="display: none">
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+            <ion-label floating [color]="this.profile['shipping_city']['color']">{{this.profile['shipping_city']['label']}}</ion-label>
+            <ion-select [color]="this.profile['shipping_city']['color']" [(ngModel)]="this.profile['shipping_city']['value']" name="shipping_city" (ionChange)="select_state('shipping_city')">
+              <ion-option *ngFor="let city of cities;" value="{{ city.ID }}">{{ city.Name.toLowerCase() }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+            <ion-label floating [color]="this.profile['shipping_state']['color']">{{this.profile['shipping_state']['label']}}</ion-label>
+            <ion-select [color]="this.profile['shipping_state']['color']" [(ngModel)]="this.profile['shipping_state']['value']" name="shipping_state">
+              <ion-option *ngFor="let state of states;" value="{{ state.ID }}" class="capitilize">{{ state.Name.toLowerCase() }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+        	<ion-item color="primary" no-lines>
+        		<button ion-button full color="secondary" type="submit">Submit (સબમીટ)</button>
+        	</ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,229 @@
+<ion-header>
+	<ion-navbar>
+	<ion-title class="capitalize">{{ 'Checkout' | translate }} <button icon-only style="background-color: transparent; float: right" (click)="root_page()"> <ion-icon name="home"></ion-icon> </button></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [class]="this.ion_content">
+	<ion-grid class="home" *ngIf="this.Loader == 1">
+		<ion-row>
+	      <ion-col text-center>
+	        <ion-spinner name="crescent" color="white_color"></ion-spinner>
+	      </ion-col>
+	    </ion-row>
+	</ion-grid>
+	<ion-grid *ngIf="this.Loader != 1" style="background-color: #fff;">
+		<ion-row style="background: #2874f0;" class="search_header">
+			<ion-col col-10>
+				<ion-searchbar  [(ngModel)]="searchTerm" (ionInput)="setFilteredCartItem()"></ion-searchbar>
+			</ion-col>
+			<ion-col col-2 style="position: relative;" (click)="page_redirect('CheckoutPage')">
+				<ion-icon name="cart" style="font-size: 42px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></ion-icon>
+				<div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+					<li>
+						<a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{cart_item}}</a>
+					</li>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row class="basic_top_margin">
+			<ion-col>
+				<ion-segment [(ngModel)]="segment" color="primary">
+			      <ion-segment-button value="Item" (click)="change_segment('Item')" text-center>
+			        {{ 'Cart_item' | translate }}
+			      </ion-segment-button>
+			      <ion-segment-button value="GST" (click)="change_segment('GST')" text-center>
+			        {{ 'GST' | translate }}
+			      </ion-segment-button>
+			    </ion-segment>
+			</ion-col>
+		</ion-row>
+		<div *ngIf="this.View == 'Item'">
+			<ion-row style="margin-top: 10px">
+				<ion-scroll  scrollX="true" style="width: 100%;height: 60px;white-space: nowrap;text-align: center;">
+					<ion-col style="">
+						<button ion-button round  [class]="this.sorting_class.Default" (click)="active_sort('Default')">{{ 'Default' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Price_asc" (click)="active_sort('Price_asc')">{{ 'Highest_price' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Price_desc" (click)="active_sort('Price_desc')">{{ 'Lowest_price' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Name_asc" (click)="active_sort('Name_asc')">{{ 'A_Z' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Name_desc" (click)="active_sort('Name_desc')">{{ 'Z_A' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Date_desc" (click)="active_sort('Date_desc')">{{ 'Newest' | translate }}</button>
+					</ion-col>
+					<ion-col style="">
+						<button ion-button round [class]="this.sorting_class.Date_asc" (click)="active_sort('Date_asc')">{{ 'Oldest' | translate }}</button>
+					</ion-col>
+				</ion-scroll>
+			</ion-row>
+			<ion-row style="background-color: #f3f3f3;margin-bottom: 60px">
+				<ion-col col-12 col-xs *ngFor="let item of items; let index = index">
+					<ion-card *ngIf="item.View == 'True'">
+						<ion-card-content style="padding: 0px !important;">
+							<ion-grid style="padding: 5px !important;border: none">
+								<ion-row>
+									<ion-col col-5 col-xs style="min-height: 150px; border: none">
+									  <div class="image_area">
+											<img src="{{item.Image[0]}}">
+										</div>
+									</ion-col>
+									<ion-col col-7 col-xs class="item_content">
+											<h3 class="capitalize" (click)="open_detail(item.ID)" *ngIf="language == 'english'">{{item.English_name.toLowerCase()}}</h3>
+											<h3 class="capitalize" (click)="open_detail(item.ID)" *ngIf="language == 'gujarati'">{{item.Gujarati_name}}</h3>
+											<h5>{{ 'Qty' | translate }}: {{item.Quantity}} | <span class="capitalize" *ngIf="language == 'english'">{{ 'Unit' | translate }}: {{item.select_unit_name.toLowerCase()}}</span> <span class="capitalize" *ngIf="language == 'gujarati'">{{ 'Unit' | translate }}: {{item.select_unit_name_gujarati}}</span> <br> {{ 'Rate' | translate }}: Rs. {{item.Rate}} | {{ 'GST' | translate }}: {{item.IGST}}% | {{ 'Discount' | translate }}: {{item.Discount}}%</h5>
+											<ion-grid>
+												<ion-row>
+													<ion-col col-4 col-xs style="border: none">
+														<ion-item class="checkout_unit_area">
+															<ion-select name="Unit"  (ionChange)="change_price(index)" [(ngModel)]="Select_units[index]">
+															  <ion-option class="capitilize" value="Select unit">{{ 'Select_unit' | translate }}</ion-option>
+															  <div *ngIf="language == 'english'">
+																<ion-option *ngFor="let unit of item.Units; let u = index" class="capitilize" value="{{item.Units_id[u]}}">{{unit}}</ion-option>
+															  </div>
+															  <div *ngIf="language == 'gujarati'">
+																<ion-option *ngFor="let unit of item.Units_gujarati; let u = index" class="capitilize" value="{{item.Units_id[u]}}">{{unit}}</ion-option>
+															  </div>
+															</ion-select>
+														</ion-item>	
+													</ion-col>
+													<ion-col col-4 col-xs style="border: none">
+														<ion-item class="checkout_quantity_area">
+															<ion-input type="number" [(ngModel)]="Quantity_input[index]"  (ionChange)="change_price(index)" placeholder="{{ 'Quantity' | translate }}" min="1"></ion-input>
+														</ion-item>
+													</ion-col>
+													<ion-col col-4 col-xs style="border: none">
+														<ion-item class="checkout_update_button">
+															<button ion-button full (click)="update_cart(index)">{{ 'OK' | translate }}</button>
+														</ion-item>
+													</ion-col>
+												</ion-row>
+											</ion-grid>
+											<div class="rate_area">
+												<h3 class="capitalize">Rs. {{item.Amount}}</h3>
+											</div>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+							<ion-grid style="padding-bottom: 0px !important;">
+								<ion-row>
+									<ion-col col-6 col-xs class="sharing_button"  (click)="sharing(item.English_name.toLowerCase(), item.MRP_rate, item.Base_gst, item.Image[0])">
+										{{ 'Sharing' | translate }}
+									</ion-col>
+									<ion-col col-6 col-xs class="checkout_cart_button" (click)="remove_from_cart(index)">
+										{{ 'Remove_from_cart' | translate }}
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col col-12 col-xs>
+					<ion-card class="">
+						<ion-card-header style="padding:12px 16px 12px 16px;font-weight:bold;color:#2874f0;border-bottom:1px solid #f3f3f3;">
+							{{ 'Extra_details' | translate }}
+						</ion-card-header>
+						<ion-card-content>
+						    <ion-grid>
+								<ion-row>
+									<ion-col col-12 col-xs text-center>
+										<ion-item style="margin-bottom: 5px">
+											<ion-input type="text" [(ngModel)]="GST_Number" placeholder="{{ 'GST_number' | translate }}" style="border: 1px solid #2874f0"></ion-input>
+										</ion-item>
+									</ion-col>
+									<ion-col col-6 col-xs text-center>
+										<ion-item style="margin-bottom: 3px">
+											<ion-input type="text" [(ngModel)]="Transport" placeholder="{{ 'Transport_name' | translate }}" style="border: 1px solid #2874f0"></ion-input>
+										</ion-item>
+									</ion-col>
+									<ion-col col-6 col-xs text-center>
+										<ion-item style="margin-bottom: 3px">
+											<ion-input type="text" [(ngModel)]="Transport_Number" placeholder="{{ 'Transport_number' | translate }}" style="border: 1px solid #2874f0"></ion-input>
+										</ion-item>
+									</ion-col>
+									<ion-col col-12 col-xs text-center>
+										<ion-item style="margin-bottom: 5px">
+											<ion-select style="min-width: 100%; border: 1px solid #2874f0; padding: 8px;" [(ngModel)]="Address">
+												<ion-option value="Ofiice">{{User_data['address_1']+', '+User_data['address_2']+', '+User_data['city']+', '+User_data['state']}}</ion-option>
+												<ion-option value="Shipping" *ngIf="Shipping_address">{{User_data['shipping_address_1']+', '+User_data['shipping_address_2']+', '+User_data['shipping_city']+', '+User_data['shipping_state']}}</ion-option>
+											</ion-select>
+										</ion-item>
+									</ion-col>
+									<ion-col col-12 col-xs text-center>
+										<ion-item style="margin-bottom: 5px">
+											<ion-textarea placeholder="{{ 'Remark' | translate }}" rows="5" style="border: 1px solid #2874f0" [(ngModel)]="Remark"></ion-textarea>
+										</ion-item>
+									</ion-col>
+								</ion-row>
+							</ion-grid>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col col-12 col-xs>
+					<ion-card class="price_list">
+						<ion-card-header>
+							{{ 'Price_details' | translate }}
+						</ion-card-header>
+						<ion-card-content>
+							   <div>
+                                   <h3 class="price">{{ 'Sub_total' | translate }} <span style="float: right">Rs. {{sub_total}}</span></h3>
+							   </div>
+							   <div>
+									<h3>{{ 'Discount' | translate }} <span style="float: right">Rs. {{discount}}</span></h3>
+							   </div>
+							   <div *ngIf="Parcel == true">
+									<h3>{{ 'Shipping' | translate }} <span style="float: right">Rs. {{shipping}}</span></h3>
+							   </div>
+							   <div>
+									<h3>{{ 'GST' | translate }} <span style="float: right">Rs. {{GST}}</span></h3>
+							   </div>
+							   <div>
+									<h3 class="total">{{ 'Grand_total' | translate }} <span style="float: right">Rs. {{total}}</span></h3>
+							   </div>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+		</div>
+		<div *ngIf="this.View == 'GST'">
+			<ion-row style="margin-top: 10px;margin-bottom: 60px">
+				<ion-col>
+					<ion-list>
+						<ion-item>
+							<ion-label class="capitalize">{{ 'All' | translate }}</ion-label>
+							<ion-checkbox [(ngModel)]="All_item" (click)="check_all()"></ion-checkbox>
+						</ion-item>
+						<div *ngFor="let item of items; let index = index">
+							<ion-item *ngIf="item.View == 'True'">
+								<ion-label class="capitalize" *ngIf="language == 'english'">{{item.English_name.toLowerCase()}}</ion-label>
+								<ion-label class="capitalize" *ngIf="language == 'gujarati'">{{item.Gujarati_name}}</ion-label>
+								<ion-checkbox [(ngModel)]="GST_option[index]"  (ionChange)="GST_update(index)"></ion-checkbox>
+							</ion-item>
+						</div>
+						<ion-item *ngIf="Parcel == true">
+							<ion-label class="capitalize">{{'Shipping'.toLowerCase()}}</ion-label>
+							<ion-checkbox [(ngModel)]="GST_option[total_item]"  (ionChange)="GST_update(total_item)"></ion-checkbox>
+						</ion-item>
+					  </ion-list>
+				</ion-col>
+			</ion-row>
+		</div>
+	</ion-grid>
+	<ion-grid text-center class="place_order_grid">
+		<ion-row>
+			<ion-col>
+				<h3>Rs. {{total}}</h3>
+			</ion-col>
+			<ion-col>
+				<button (click)="place_order()">{{ 'Place_order' | translate }}</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

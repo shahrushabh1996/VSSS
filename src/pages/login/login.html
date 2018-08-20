@@ -1,0 +1,64 @@
+<!--
+  Generated template for the ChangepasswordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+</ion-header>
+
+
+<ion-content class="masters login" padding>
+  <ion-grid class="login" *ngIf="this.Loader == 1">
+    <ion-row>
+        <ion-col text-center>
+          <ion-spinner name="crescent" color="white_color"></ion-spinner>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-grid class="login" *ngIf="this.Loader != 1">
+    <ion-row>
+      <ion-col text-center>
+        <p color="secondary" style="text-align: center;color: #fff;font-size: 20px;">First time user? <b (click)="page_redirect('SignupPage')">Click here to create an account</b></p>
+        <p color="secondary" style="text-align: center;color: #fff;font-size: 20px;">પહેલી વાર વાપરો છો? <b (click)="page_redirect('SignupPage')">ખાતું ખોલવા અહીં ક્લીક કરો</b></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <h4 style="color: #fff;font-size: 20px">Login (લૉગિન)</h4>
+      </ion-col>
+    </ion-row>
+    <form (ngSubmit)="submit_form()">
+      <ion-row>
+        <ion-col text-center>
+      		<ion-item color="primary" style="padding: 0">
+      			<ion-label floating [color]="this.login['mobile']['color']">{{this.login['mobile']['label']}}</ion-label>
+      			<ion-input [color]="this.login['mobile']['color']" [(ngModel)]="this.login['mobile']['value']" (ionBlur)="check_mobile()" name="mobile"></ion-input>
+      		</ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <ion-item color="primary" style="padding: 0">
+            <ion-label floating [color]="this.login['password']['color']">{{this.login['password']['label']}}</ion-label>
+            <ion-input [color]="this.login['password']['color']" [(ngModel)]="this.login['password']['value']" name="password" type="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+        	<ion-item color="primary" no-lines>
+        		<button ion-button full color="secondary" type="submit">Login (લૉગિન)</button>
+        	</ion-item>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col text-center>
+        <p color="secondary" style="text-align: center;color: #fff">Forgot password (પાસવર્ડ ભૂલી ગયા છો?)? <b (click)="page_redirect('ForgotpasswordPage')">Click here (અહીં ક્લિક કરો)</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

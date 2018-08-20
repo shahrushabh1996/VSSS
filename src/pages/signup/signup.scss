@@ -1,0 +1,27 @@
+page-signup {
+    //background-color: #2874f0 !important;
+  }
+  .masters.signup {
+    background-color: #2874f0;
+  }
+  
+  ion-grid.signup {
+      min-width: 100%;
+      min-height: 100%;
+      justify-content: center;
+  }
+  .select-icon{
+      color: #fff !important;
+  }
+  .alert-radio-label{
+      text-transform: capitalize;
+  }
+  div.spinner {
+      left: 50%;
+      text-align: center;
+  }
+  .big_spinner svg {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  

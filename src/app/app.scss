@@ -1,0 +1,427 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+
+.page_blue {
+	background-color: #2874f0;
+}
+.page_gray {
+	background-color: #f3f3f3;
+}
+.search_header{
+	position: fixed;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+}
+.capitalize{
+	text-transform: capitalize;
+}
+.toolbar-background {
+  background-color: #fdd922;
+}
+.disable{
+	background-color: #f3f3f3;
+	color: #000;
+}
+.disable:hover{
+    color: #fff
+}
+.disable:focus{
+    color: #fff
+}
+.card-title-md, .card-title-ios{
+	font-weight: bold;
+}
+ion-card .image_area{
+	position: relative;
+	width: auto;
+	height: 150px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+.image_area img {
+	position: absolute;
+	height: auto;
+	width: auto;
+	max-width: 100%;
+	max-height: 150px;
+	margin: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.card-content-md, .card-content-ios{
+	padding: 5px 5px;
+}
+ion-card-content ion-card-title{
+	font-size: 18px !important;
+	border-top: 1px solid #f3f3f3;
+	border-bottom: 1px solid #f3f3f3;
+	text-align: center;
+	white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+ion-card ion-card-content ion-grid{
+	margin-top: 10px;
+	padding-bottom: 10px !important;
+	border-bottom: 1px solid #f3f3f3
+}
+ion-card ion-grid ion-row ion-col{
+	text-align: center;
+}
+ion-card ion-grid ion-row ion-col:first-child{
+	border-right: 1px solid #f3f3f3;
+}
+.card-md h4, .card-md p, .card-ios h4, .card-ios p{
+	font-weight: bold;
+	color: #222;
+}
+.list-inline>li{
+	display:inline-block;
+	padding-right:5px;
+	padding-left:5px;
+}
+.list-inline>li>a{
+	display: inline-block; 
+	font-size: 16px; 
+	line-height: 20px; 
+	padding: 7px 4px; 
+	margin: 5px; 
+	cursor: pointer; 
+	height: 32px; 
+	width: 32px; 
+	background-color: #2874f0; 
+	border-radius: 50%; 
+	color: #fff; 
+	text-align: center;
+}
+.list-inline>li.active>a{
+	color: #000 !important;
+	background-color: #fdd922;
+}
+.card-md, .card-ios{
+	margin: 3px;
+	width: calc(100% - 5px);
+}
+.detail.card-md, .detail.card-ios{
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	width: 100%;
+	border-radius: 0px;
+}
+.cart_button{
+	font-size: 12px;
+}
+.item_detail_text{
+    text-align: justify;
+    font-size: 16px; 
+    color: #000;
+    margin-top: 10px
+}
+.button_grid{
+	background-color: #fdd922;
+	left: 0; 
+	bottom: 0; 
+	position: fixed;
+	z-index: 1;
+}
+.sharing_row{
+	cursor: pointer;
+	color: #000;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.cart_row{
+	cursor: pointer;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.add{
+    background-color: #2874f0;
+}
+.remove{
+	background-color: #f53d3d;
+}
+.price_area{
+	width: 33.333333%;
+	float: left;
+	padding-right: 5px;
+}
+.price_area div{
+	float: left;
+	border: 1px solid #2874f0;
+	padding: 10px;
+	width: 100%;
+	min-height: 125px;
+}
+.price_area div h4{
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+.price_area div p{
+	font-size: 12px;
+	text-align: center;
+}
+.price_area div hr[color=primary]{
+	border-top-color:#2874f0;
+	border-right-color:#2874f0;
+	border-bottom-color:#2874f0;
+	border-left-color:#2874f0;
+	background-color:#2874f0;
+}
+.cart_area{
+	float: left;
+}
+.cart_area.unit_area{
+	width: 50%;
+}
+.cart_area.qunatity_area{
+	width: 35%;
+}
+.cart_area.button_area{
+	width: 15%;
+}
+.cart_area.button_area ion-label{
+	margin: 0px;
+}
+.cart_area.button_area .button-inner{
+	font-size: 16px;
+}
+.slide{
+	display: inline-block; 
+	font-size: 16px; 
+	line-height: 20px; 
+	padding: 7px 4px; 
+	margin: 5px; 
+	cursor: pointer; 
+	height: 32px; 
+	width: 32px; 
+	margin: 5px auto;
+	background-color: #2874f0; 
+	border-radius: 50%; 
+	color: #fff; 
+	text-align: center;
+}
+.slide_img{
+	height: auto;
+	width: auto;
+	max-height: 350px;
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.checkout_update_button{
+	padding-left: 0px
+}
+.checkout_update_button ion-label{
+    margin: 0px;
+}
+.checkout_update_button .item-inner{
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+.checkout_quantity_area{
+	padding-left: 0px
+}
+.checkout_quantity_area .item-inner{
+	padding: 2px !important;
+}
+.checkout_quantity_area ion-input{
+	width: 100%; 
+	max-width: 100%; 
+	border: 1px solid #2874f0
+}
+.checkout_quantity_area input{
+	margin: 1px 5px;
+	width: 100%;
+}
+.checkout_unit_area{
+	padding-left: 0px
+}
+.checkout_unit_area .item-inner{
+	padding: 2px !important;
+}
+.checkout_unit_area ion-select{
+	width: 100%; 
+	max-width: 100%; 
+	border: 1px solid #2874f0;
+	padding: 0px 8px 0px 0px
+}
+.item_content {
+	min-height: 150px; 
+	border: none
+}
+.item_content h3{
+	font-size: 16px; 
+	color: #2874f0;
+	font-weight: bold; 
+	text-align: left; 
+	margin-left: 10px
+}
+.item_content h5{
+	color: #000; 
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left; 
+	margin:10px 0 0 10px
+}
+.item_content ion-grid{
+	margin-bottom: 15px;
+	border: none; 
+	margin-left: 10px
+}
+.rate_area{
+	margin-left: 10px;
+	padding: 5px 0 5px 0; 
+	border-top: 1px solid #2874f0; 
+	border-bottom: 1px solid #2874f0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+.rate_area h3{
+	font-size: 16px; 
+	color: #2874f0;
+	font-weight: bold; 
+	text-align: center;
+}
+.sharing_button{
+	cursor: pointer;
+	background-color: #fdd922;
+	padding: 10px; 
+	color: #000;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.checkout_cart_button{
+	cursor: pointer;
+	background-color: #f53d3d;
+	padding: 10px; 
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+.price_list ion-card-header{
+	padding: 12px 16px 12px 16px;
+	font-weight: bold;
+	color: #2874f0;
+	border-bottom: 1px solid #f3f3f3;
+}
+.price_list ion-card-content{
+	padding: 0 16px 0 16px
+}
+.price_list div{
+	padding: 8px 0 8px 0;
+	border-bottom: 1px dashed #f3f3f3;
+}
+.price_list div h3{
+	font-size: 16px;
+	font-weight: bold;
+}
+.price_list div h3.total{
+	font-size: 18px;
+	color: #2874f0;
+	font-weight: bold;
+}
+.place_order_grid{
+	background-color: #2874f0;
+	color: #fff;
+	-webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.70), 0 6px 3px -4px rgba(0, 0, 0, 0.7), 0 3px 10px 0 rgba(0, 0, 0, 0.70);
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.70), 0 6px 3px -4px rgba(0, 0, 0, 0.7), 0 3px 10px 0 rgba(0, 0, 0, 0.70);
+	left: 0; 
+	bottom: 0; 
+	position: fixed;
+	z-index: 1;
+}
+.place_order_grid ion-col{
+	padding: 8px 16px 8px 16px
+}
+.place_order_grid h3{
+	margin: 0; 
+	font-size: 16px; 
+	position: absolute; 
+	top: 50%; 
+	left: 50%; 
+	transform: translateX(-50%) translateY(-50%);
+}
+.place_order_grid button{
+	padding: 8px; 
+	width: 100%; 
+	font-size: 16px;
+	background-color: #fdd922;
+}
+.segment-md .segment-button, .segment-ios .segment-button{
+	font-size: 14px;
+	font-weight: bold;
+}
+.order_data div:not(:last-child){
+	padding: 5px;
+	border-bottom: 1px dashed #f3f3f3;
+}
+.order_data div:last-child{
+	padding: 5px 5px 0px 5px
+}
+.order_data div h3{
+	text-align: left;
+	font-size:16px;
+	font-weight:bold
+}
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.item-select-searchable-is-enabled{
+	background-color: unset !important;
+	margin-top: 22px !important;
+}
+.select-searchable-md .select-searchable-label, .select-searchable-ios .select-searchable-label{
+	color: #fff !important; 
+}
+.select-searchable-md .select-searchable-value, .select-searchable-ios .select-searchable-value{
+	color: #fff;
+}
+.title-ios{
+	padding: 20px 0 0 0 !important;
+}
+.back-button-text-ios{
+	display: none;
+}
+.back-button-ios{
+	color: #000;
+}
+.image_card.card-md{
+	margin-top:44px;
+}
+.image_card.card-ios{
+	margin-top:30px;
+}
+.md .basic_top_margin{
+	margin-top:58px;
+}
+.ios .basic_top_margin{
+	margin-top:45px;
+}
