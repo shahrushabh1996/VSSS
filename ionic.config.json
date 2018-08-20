@@ -1,8 +1,8 @@
 {
   "name": "VSSS_final",
-  "app_id": "bbc3aeff",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "209ac7c2"
 }
