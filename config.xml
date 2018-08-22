@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.webers.VSSS" version="1.1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.bits.VSSS" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>VSSS - Vishal stationery super store</name>
     <description>Welcome to Vishal stationery superstore gujarat. Find 4000 products of stationery in wholesale. Get goods at your doorstep from the direct stationery importer.</description>
     <author email="webersinfotech@gmail.com">Webers Infotech</author>
