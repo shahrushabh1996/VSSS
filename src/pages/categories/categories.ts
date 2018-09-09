@@ -65,6 +65,14 @@ export class CategoriesPage {
 
   Logout: string = '';
 
+  Contact: string = '';
+
+  Wishlist: string = '';
+
+  Ledger: string = '';
+
+  Outstanding: string = '';
+
   pdfObj = null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public dataService: DataProvider, public device: Device, public platform: Platform, public actionSheetCtrl: ActionSheetController, public loadingCtrl: LoadingController, public headerColor: HeaderColor, public translate: TranslateService, public transfer: FileTransfer, public file: File, public backgroundMode: BackgroundMode) {
@@ -80,7 +88,10 @@ export class CategoriesPage {
     this.platform.ready().then(() => {
       this.device_data['IMEI'] = this.device.uuid === null ? '630fcc683424e59f' : this.device.uuid;
       var link = 'https://www.vsss.co.in/Android/get_category';
-      var post_data = JSON.stringify({IMEI: this.device_data['IMEI']});
+      var post_data = JSON.stringify({
+        IMEI: this.device_data['IMEI'],
+        Platform: this.device.platform === null ? 'Browser' : this.device.platform
+      });
       this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
         console.log(data);
         this.cart_item = data['Cart_items'];
@@ -229,11 +240,15 @@ export class CategoriesPage {
   }
 
   user_tab(){
-    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'Logout']).subscribe(res => {
+    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'VSSS_Contact', 'Wishlist', 'Ledger', 'Outstanding', 'Logout']).subscribe(res => {
       this.Edit_profile = res.Edit_profile;
       this.Order_history = res.Order_history;
       this.Order_item_history = res.Order_item_history;
       this.Change_password = res.Change_password;
+      this.Contact = res.VSSS_Contact;
+      this.Wishlist = res.Wishlist;
+      this.Ledger = res.Ledger;
+      this.Outstanding = res.Outstanding;
       this.Logout = res.Logout;
     });
     let actionSheet = this.actionSheetCtrl.create({
@@ -251,7 +266,8 @@ export class CategoriesPage {
               var link = 'https://www.vsss.co.in/Android/change_language';
               var post_data = JSON.stringify({
                 IMEI: this.device_data['IMEI'],
-                Language: 'English'
+                Language: 'English',
+                Platform: this.device.platform === null ? 'Browser' : this.device.platform
               });
               this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
                 loading.dismiss();
@@ -272,13 +288,19 @@ export class CategoriesPage {
               var link = 'https://www.vsss.co.in/Android/change_language';
               var post_data = JSON.stringify({
                 IMEI: this.device_data['IMEI'],
-                Language: 'Gujarati'
+                Language: 'Gujarati',
+                Platform: this.device.platform === null ? 'Browser' : this.device.platform
               });
               this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
                 loading.dismiss();
                 this.navCtrl.push(this.navCtrl.getActive().component);
               });
             });
+          }
+        },{
+          text: this.Wishlist,
+          handler: () => {
+            this.navCtrl.push('WishlistPage');
           }
         },{
           text: this.Edit_profile,
@@ -295,18 +317,23 @@ export class CategoriesPage {
           handler: () => {
             this.navCtrl.push('OrderitemPage');
           }
+        },{
+          text: this.Contact,
+          handler: () => {
+            this.navCtrl.push('ContactPage');
+          }
         }
       ]
     });
     if(this.customer != ''){
-      actionSheet.addButton({ text: 'Ledger', handler: () => { window.open('https://www.vsss.co.in/Admin/index.php/Ledger/customer_print/'+this.customer, '_system', 'location=yes'); } });
-      actionSheet.addButton({ text: 'Outstanding', handler: () => { window.open('https://www.vsss.co.in/Admin/index.php/Outstanding/customer_print/'+this.customer, '_system', 'location=yes'); } });
+      actionSheet.addButton({ text: this.Ledger, handler: () => { window.open('https://www.vsss.co.in/Admin/index.php/Ledger/customer_print/'+this.customer, '_system', 'location=yes'); } });
+      actionSheet.addButton({ text: this.Outstanding, handler: () => { window.open('https://www.vsss.co.in/Admin/index.php/Outstanding/customer_print/'+this.customer, '_system', 'location=yes'); } });
       actionSheet.addButton({ text: this.Change_password, handler: () => { this.navCtrl.push('ChangepasswordPage'); } });
-      actionSheet.addButton({ text: this.Logout, handler: () => { let loading = this.loadingCtrl.create({ spinner: 'crescent', content: 'Please wait.' }); loading.present(); var link = 'https://www.vsss.co.in/Android/logout'; var post_data = JSON.stringify({IMEI: this.device_data['IMEI']}); this.http.post(link, post_data).map(res => res.json()).subscribe(data => { loading.dismiss(); this.navCtrl.setRoot(HomePage); }); } });
+      actionSheet.addButton({ text: this.Logout, handler: () => { let loading = this.loadingCtrl.create({ spinner: 'crescent', content: 'Please wait.' }); loading.present(); var link = 'https://www.vsss.co.in/Android/logout'; var post_data = JSON.stringify({IMEI: this.device_data['IMEI'], Platform: this.device.platform === null ? 'Browser' : this.device.platform}); this.http.post(link, post_data).map(res => res.json()).subscribe(data => { loading.dismiss(); this.navCtrl.setRoot(HomePage); }); } });
     }
     else{
       actionSheet.addButton({ text: this.Change_password, handler: () => { this.navCtrl.push('ChangepasswordPage'); } });
-      actionSheet.addButton({ text: this.Logout, handler: () => { let loading = this.loadingCtrl.create({ spinner: 'crescent', content: 'Please wait.' }); loading.present(); var link = 'https://www.vsss.co.in/Android/logout'; var post_data = JSON.stringify({IMEI: this.device_data['IMEI']}); this.http.post(link, post_data).map(res => res.json()).subscribe(data => { loading.dismiss(); this.navCtrl.setRoot(HomePage); }); } });
+      actionSheet.addButton({ text: this.Logout, handler: () => { let loading = this.loadingCtrl.create({ spinner: 'crescent', content: 'Please wait.' }); loading.present(); var link = 'https://www.vsss.co.in/Android/logout'; var post_data = JSON.stringify({IMEI: this.device_data['IMEI'], Platform: this.device.platform === null ? 'Browser' : this.device.platform}); this.http.post(link, post_data).map(res => res.json()).subscribe(data => { loading.dismiss(); this.navCtrl.setRoot(HomePage); }); } });
     }
     actionSheet.present();
   }

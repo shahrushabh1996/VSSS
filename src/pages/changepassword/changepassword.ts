@@ -60,7 +60,8 @@ export class ChangepasswordPage {
       var post_data = JSON.stringify({
         old_password: this.changepassword['old_password']['value'],
         new_password: this.changepassword['new_password']['value'],
-        IMEI: this.device_data['IMEI']
+        IMEI: this.device_data['IMEI'],
+        Platform: this.device.platform === null ? 'Browser' : this.device.platform
       });
       this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
         loading.dismiss();

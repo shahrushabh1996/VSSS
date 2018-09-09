@@ -61,7 +61,8 @@ export class LoginPage {
       var post_data = JSON.stringify({
         'mobile': this.login['mobile']['value'],
         'password': this.login['password']['value'],
-        'IMEI': this.login['IMEI']['value']
+        'IMEI': this.login['IMEI']['value'],
+        'Platform': this.device.platform === null ? 'Browser' : this.device.platform
       });
       this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
         loading.dismiss();

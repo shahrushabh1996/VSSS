@@ -76,7 +76,8 @@ export class SubCategoriesPage {
     var post_data = JSON.stringify(
         {
           'IMEI': this.device_data['IMEI'],
-          'id': this.category
+          'id': this.category,
+          'Platform': this.device.platform === null ? 'Browser' : this.device.platform
         }
     );
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {

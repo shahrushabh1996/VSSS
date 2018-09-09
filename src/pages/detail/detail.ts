@@ -122,7 +122,8 @@ export class DetailPage {
     var post_data = JSON.stringify(
         {
           IMEI: this.device_data['IMEI'],
-          id: this.item_id
+          id: this.item_id,
+          Platform: this.device.platform === null ? 'Browser' : this.device.platform
         }
     );
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
@@ -189,7 +190,8 @@ export class DetailPage {
     var link = 'https://www.vsss.co.in/Android/add_to_cart';
     var post_data = JSON.stringify({
       IMEI: this.device_data['IMEI'],
-      value: this.item[0]['ID']
+      value: this.item[0]['ID'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
@@ -210,7 +212,8 @@ export class DetailPage {
     var link = 'https://www.vsss.co.in/Android/remove_from_cart';
     var post_data = JSON.stringify({
       IMEI: this.device_data['IMEI'],
-      value: this.item[0]['ID']
+      value: this.item[0]['ID'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
@@ -218,6 +221,44 @@ export class DetailPage {
       this.qunatity = '';
       this.item[0]['Button'] = 'Add';
       this.cart_item -= 1;
+    });
+  }
+
+  add_to_wishlist(item){
+    event.stopPropagation();
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Please wait.'
+    });
+    loading.present();
+    var link = 'https://www.vsss.co.in/Android/add_to_wishlist';
+    var post_data = JSON.stringify({
+      IMEI: this.device_data['IMEI'],
+      value: this.item[0]['ID'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
+    });
+    this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
+      loading.dismiss();
+      this.item[0]['Wishlist'] = 'Remove';
+    });
+  }
+
+  remove_from_wishlist(item){
+    event.stopPropagation();
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Please wait.'
+    });
+    loading.present();
+    var link = 'https://www.vsss.co.in/Android/remove_from_wishlist';
+    var post_data = JSON.stringify({
+      IMEI: this.device_data['IMEI'],
+      value: this.item[0]['ID'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
+    });
+    this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
+      loading.dismiss();
+      this.item[0]['Wishlist'] = 'Add';
     });
   }
 
@@ -235,6 +276,7 @@ export class DetailPage {
     var post_data = JSON.stringify(
       {
         IMEI: this.device_data['IMEI'],
+        Platform: this.device.platform === null ? 'Browser' : this.device.platform,
         qunatity: isNaN(this.qunatity) ? 0 : parseInt(this.qunatity),
         item_id: this.item_id,
         unit: parseInt(this.unit)

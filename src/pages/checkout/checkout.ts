@@ -123,6 +123,7 @@ export class CheckoutPage {
     var post_data = JSON.stringify({
       IMEI: this.device_data['IMEI'],
       order: this.active_sorting,
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
@@ -180,7 +181,8 @@ export class CheckoutPage {
     var link = 'https://www.vsss.co.in/Android/remove_from_cart';
     var post_data = JSON.stringify({
       IMEI: this.device_data['IMEI'],
-      value: this.items[index]['ID']
+      value: this.items[index]['ID'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
@@ -214,7 +216,8 @@ export class CheckoutPage {
         IMEI: this.device_data['IMEI'],
         qunatity: isNaN(this.Quantity_input[index]) || this.Quantity_input[index] == '' ? 0 : parseInt(this.Quantity_input[index]),
         item_id: this.items[index]['ID'],
-        unit: parseInt(this.Select_units[index])
+        unit: parseInt(this.Select_units[index]),
+        Platform: this.device.platform === null ? 'Browser' : this.device.platform
       }
     );
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
@@ -373,6 +376,7 @@ export class CheckoutPage {
     var post_data = JSON.stringify(
       {
         IMEI: this.device_data['IMEI'],
+        Platform: this.device.platform === null ? 'Browser' : this.device.platform,
         Item: JSON.stringify(items),
         GST_number:this.GST_Number,
         Transport_name:this.Transport,

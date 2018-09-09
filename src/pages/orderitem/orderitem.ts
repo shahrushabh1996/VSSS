@@ -99,6 +99,7 @@ export class OrderitemPage {
       order: this.active_sorting,
       page: this.active_page_number,
       order_number: this.order_number,
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();

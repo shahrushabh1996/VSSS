@@ -76,7 +76,10 @@ export class ProfilePage {
 
   get_data(){
     var link = 'https://www.vsss.co.in/Android/get_profile';
-    var post_data = JSON.stringify({IMEI: this.device_data['IMEI']});
+    var post_data = JSON.stringify({
+      IMEI: this.device_data['IMEI'],
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
+    });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       this.Loader = 0;
       this.cities = data['Cities'];
@@ -125,7 +128,8 @@ export class ProfilePage {
           'shipping_address_1': this.profile['shipping_address_1']['value'],
           'shipping_address_2': this.profile['shipping_address_2']['value'],
           'shipping_city': this.profile['shipping_city']['value'],
-          'shipping_state': this.profile['shipping_state']['value']
+          'shipping_state': this.profile['shipping_state']['value'],
+          'Platform': this.device.platform === null ? 'Browser' : this.device.platform
         }
       );
       this.http.post(link, post_data).map(res => res.json()).subscribe(data => {

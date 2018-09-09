@@ -102,8 +102,23 @@
 				    			<P>₹ {{ item.MRP_rate }}</P>
 				    		</ion-col>
 				    	</ion-row>
-				    </ion-grid>
-				    <div *ngIf="item.Button == 'Add'">
+					</ion-grid>
+					<ion-grid>
+						<ion-row>
+							<ion-col col-12 col-xs>
+								<button ion-button full color="primary" class="cart_button" (click)="add_to_cart(index)" *ngIf="item.Button == 'Add'">{{ 'Add_to_cart' | translate }}</button>
+								<button ion-button full color="danger" class="cart_button" (click)="remove_from_cart(index)" *ngIf="item.Button != 'Add'">{{ 'Remove_from_cart' | translate }}</button>
+							</ion-col>
+							<ion-col col-9 col-xs style="padding-right: 2px">
+								<button ion-button full color="primary" class="cart_button" (click)="add_to_wishlist(index)" *ngIf="item.Wishlist == 'Add'">{{ 'Add_to_wishlist' | translate }}</button>
+								<button ion-button full color="danger" class="cart_button" (click)="remove_from_wishlist(index)" *ngIf="item.Wishlist != 'Add'">{{ 'Remove_from_wishlist' | translate }}</button>
+							</ion-col>
+							<ion-col col-3 col-xs>
+								<button ion-button full color="primary" class="cart_button" (click)="sharing(item.English_name.toLowerCase(), item.MRP_rate, item.IGST, item.Image[0])"><ion-icon name="share"></ion-icon></button>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				    <!--<div *ngIf="item.Button == 'Add'">
 				    	<ion-grid>
 				    		<ion-row>
 				    			<ion-col col-9 col-xs>
@@ -126,7 +141,7 @@
 				    			</ion-col>
 				    		</ion-row>
 				    	</ion-grid>
-				    </div>
+				    </div>-->
 				  </ion-card-content>
 				</ion-card>
 			</ion-col>
@@ -142,6 +157,11 @@
 					<li [class]="prev_page"  (click)="prev_page_pagination()"><a><</a></li>
 					<li [class]="next_page"  (click)="next_page_pagination()"><a>></a></li>
 				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row style="background-color: #f3f3f3;text-align: center;padding-bottom: 10px">
+			<ion-col style="margin-top: 0px">
+				<p style="font-size: 18px;margin: 0">APP Developed By: <a href="tel:+919429058733">WEBERS INFOTECH</a></p>
 			</ion-col>
 		</ion-row>
 		

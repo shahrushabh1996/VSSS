@@ -197,6 +197,12 @@
 		</ion-card>
 		<ion-grid text-center class="button_grid">
 			<ion-row>
+				<ion-col padding class="cart_row add" (click)="add_to_wishlist(item[0].ID)" *ngIf="item[0].Wishlist == 'Add'">
+					{{ 'Wishlist' | translate }}
+				</ion-col>
+				<ion-col padding class="cart_row remove" (click)="remove_from_wishlist(item[0].ID)" *ngIf="item[0].Wishlist != 'Add'">
+					{{ 'Wishlist' | translate }}
+				</ion-col>
 				<ion-col padding class="sharing_row" (click)="sharing(item_name, item[0].MRP_rate, item[0].IGST, images[0])">
 					{{ 'Sharing' | translate }}
 				</ion-col>

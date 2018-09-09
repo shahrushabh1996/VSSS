@@ -10,6 +10,7 @@ import { CategoryItemPage } from '../pages/category-item/category-item';
 import { SubCategoriesPage } from '../pages/sub-categories/sub-categories';
 import { SubCategoryItemPage } from '../pages/sub-category-item/sub-category-item';
 import { CheckoutPage } from '../pages/checkout/checkout';
+import { WishlistPage } from '../pages/wishlist/wishlist';
 import { OrderPage } from '../pages/order/order';
 import { OrderitemPage } from '../pages/orderitem/orderitem';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
@@ -21,6 +22,7 @@ import { SliderPage } from '../pages/slider/slider';
 import { SearchPage } from '../pages/search/search';
 import { SearchItemPage } from '../pages/search-item/search-item';
 import { ProfilePage } from '../pages/profile/profile';
+import { ContactPage } from '../pages/contact/contact';
 
 @Component({
   templateUrl: 'app.html'

@@ -86,7 +86,8 @@ export class OrderPage {
     var post_data = JSON.stringify({
       IMEI: this.device_data['IMEI'],
       order: this.active_sorting,
-      page: this.active_page_number
+      page: this.active_page_number,
+      Platform: this.device.platform === null ? 'Browser' : this.device.platform
     });
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();

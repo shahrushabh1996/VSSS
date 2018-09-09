@@ -62,7 +62,7 @@ export function createTranslateLoader(http: Http) {
     HttpClientModule,
     PhotoViewer,
     HeaderColor,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    IonicErrorHandler,
     DataProvider,
     AutoSuggestProvider,
     BarcodeScanner,
