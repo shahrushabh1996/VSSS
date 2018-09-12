@@ -1,0 +1,109 @@
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : Webers
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet 2:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : SAMSUNG Mobile USB Remote NDIS Network Device #2
+   Physical Address. . . . . . . . . : 02-58-6C-3B-66-67
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : 2405:205:c848:387:acf3:1b4c:6a47:9784(Preferred) 
+   Temporary IPv6 Address. . . . . . : 2405:205:c848:387:7029:c15b:350e:eec2(Preferred) 
+   Link-local IPv6 Address . . . . . : fe80::acf3:1b4c:6a47:9784%22(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.42.156(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : 20 August 2018 12:01:20
+   Lease Expires . . . . . . . . . . : 20 August 2018 13:31:21
+   Default Gateway . . . . . . . . . : fe80::4c6c:6eff:fe17:259d%22
+                                       192.168.42.129
+   DHCP Server . . . . . . . . . . . : 192.168.42.129
+   DHCPv6 IAID . . . . . . . . . . . : 436361324
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-20-B9-BB-D8-4C-72-B9-20-77-61
+   DNS Servers . . . . . . . . . . . : 2405:205:c848:387:4c6c:6eff:fe17:259d
+                                       192.168.42.129
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Ethernet adapter Ethernet:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Intel(R) 82579V Gigabit Network Connection
+   Physical Address. . . . . . . . . : 4C-72-B9-20-77-61
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+
+Ethernet adapter VMware Network Adapter VMnet1:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet1
+   Physical Address. . . . . . . . . : 00-50-56-C0-00-01
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::c8fd:3878:2480:19eb%7(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.10.1(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : 20 August 2018 11:56:02
+   Lease Expires . . . . . . . . . . : 20 August 2018 13:16:16
+   Default Gateway . . . . . . . . . : 
+   DHCP Server . . . . . . . . . . . : 192.168.10.254
+   DHCPv6 IAID . . . . . . . . . . . : 201347158
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-20-B9-BB-D8-4C-72-B9-20-77-61
+   DNS Servers . . . . . . . . . . . : fec0:0:0:ffff::1%1
+                                       fec0:0:0:ffff::2%1
+                                       fec0:0:0:ffff::3%1
+   NetBIOS over Tcpip. . . . . . . . : Disabled
+
+Ethernet adapter VMware Network Adapter VMnet8:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : VMware Virtual Ethernet Adapter for VMnet8
+   Physical Address. . . . . . . . . : 00-50-56-C0-00-08
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::f0d8:7764:cb48:29a4%8(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.31.1(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : 20 August 2018 11:56:04
+   Lease Expires . . . . . . . . . . : 20 August 2018 13:16:16
+   Default Gateway . . . . . . . . . : 
+   DHCP Server . . . . . . . . . . . : 192.168.31.254
+   DHCPv6 IAID . . . . . . . . . . . : 218124374
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-20-B9-BB-D8-4C-72-B9-20-77-61
+   DNS Servers . . . . . . . . . . . : fec0:0:0:ffff::1%1
+                                       fec0:0:0:ffff::2%1
+                                       fec0:0:0:ffff::3%1
+   NetBIOS over Tcpip. . . . . . . . : Disabled
+
+Tunnel adapter isatap.{8F403A8E-452C-42E5-B710-1445993B68BE}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Microsoft ISATAP Adapter
+   Physical Address. . . . . . . . . : 00-00-00-00-00-00-00-E0
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+
+Tunnel adapter isatap.{EC4CC138-CF01-4D09-A7A4-77F3146322AD}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Microsoft ISATAP Adapter #2
+   Physical Address. . . . . . . . . : 00-00-00-00-00-00-00-E0
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+
+Tunnel adapter isatap.{3C2E42A3-CB9B-450C-9A23-2FA9B0C97505}:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Microsoft ISATAP Adapter #3
+   Physical Address. . . . . . . . . : 00-00-00-00-00-00-00-E0
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes

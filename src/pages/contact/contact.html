@@ -1,0 +1,145 @@
+<ion-header>
+	<ion-navbar>
+	<ion-title class="capitalize">{{ 'VSSS_Contact' | translate }} <button icon-only style="background-color: transparent; float: right" (click)="root_page()"> <ion-icon name="home"></ion-icon> </button></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content [class]="this.ion_content">
+  <ion-grid class="home" *ngIf="this.Loader == 1">
+    <ion-row>
+      <ion-col text-center>
+        <ion-spinner name="crescent" color="white_color"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="this.Loader != 1"  style="background-color: #fff;">
+    <ion-row style="background: #2874f0;" class="search_header">
+      <ion-col col-8>
+        <div style="display: block">
+            <ion-searchbar (ionFocus)="page_redirect('SearchPage')" style="float: left"></ion-searchbar>
+        </div>
+      </ion-col>
+      <ion-col col-2 style="position: relative;" (click)="page_redirect('WishlistPage')">
+        <ion-icon name="heart" style="font-size: 28px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" > </ion-icon>
+        <div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+					<li>
+						<a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{wishlist_item}}</a>
+					</li>
+				</div>
+		  </ion-col>
+      <ion-col col-2 style="position: relative;" (click)="page_redirect('CheckoutPage')">
+        <ion-icon name="cart" style="font-size: 42px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></ion-icon>
+        <div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+          <li>
+            <a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{cart_item}}</a>
+          </li>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 50px">
+      <ion-col col-12>
+        <h3 style="text-align: center">{{ 'Vishal_statoniery' | translate }}</h3>
+      </ion-col>
+      <ion-card class="detail">
+          <ion-card-content style="padding-bottom: 0px;padding: 15px">
+              <ion-card-title class="capitalize" text-left>
+                  {{ 'Address' | translate }}
+              </ion-card-title>
+              <div style="margin-top: 5px;" class="capitalize">
+                  <p class="item_detail_text" style="font-size: 18px">
+                      {{ 'Address_text' | translate }}
+                  </p>
+              </div>
+          </ion-card-content>
+      </ion-card>
+      <ion-card class="detail">
+          <ion-card-content style="padding-bottom: 0px;padding: 15px">
+              <ion-card-title class="capitalize" text-left>
+                  {{ 'Office' | translate }}
+              </ion-card-title>
+              <div style="margin-top: 5px;" class="capitalize">
+                <ion-row>
+                    <ion-col col-9>
+                      <p style="font-size: 18px">
+                          079-2562 2037
+                      </p>
+                    </ion-col>
+                    <ion-col col-3>
+                        <a href="tel:079-25622037" style="color: #fff">
+                          <div style="float: left; width: 100%; background-color: #2874f0;text-align: center;vertical-align: middle">
+                              {{ 'Call' | translate }}
+                          </div>
+                        </a>
+                    </ion-col>
+                    <ion-col col-9>
+                      <ion-icon name="logo-whatsapp" style="float: left;color: #2874f0;font-size: 18px;margin-right: 5px"></ion-icon>
+                      <p style="font-size: 18px;float: left">
+                          +91-9429066381
+                      </p>
+                    </ion-col>
+                    <ion-col col-3>
+                      <a href="tel:+919429066381" style="color: #fff">
+                        <div style="float: left; width: 100%;text-align: center;vertical-align: middle;">
+                          <div style="background-color: #2874f0;">
+                              {{ 'Call' | translate }}
+                          </div>
+                        </div>
+                      </a>
+                    </ion-col>
+                </ion-row>
+              </div>
+          </ion-card-content>
+      </ion-card>
+      <ion-card class="detail">
+        <ion-card-content style="padding-bottom: 0px;padding: 15px">
+            <ion-card-title class="capitalize" text-left>
+                {{ 'Vishal_maheta' | translate }}
+            </ion-card-title>
+            <div style="margin-top: 5px;" class="capitalize">
+              <ion-row>
+                  <ion-col col-9>
+                    <ion-icon name="logo-whatsapp" style="float: left;color: #2874f0;font-size: 18px;margin-right: 5px"></ion-icon>
+                    <p style="font-size: 18px;float: left">
+                      +91-9824587820
+                    </p>
+                  </ion-col>
+                  <ion-col col-3>
+                    <a href="tel:+919824587820" style="color: #fff">
+                      <div style="float: left; width: 100%;text-align: center;vertical-align: middle;">
+                        <div style="background-color: #2874f0;">
+                            {{ 'Call' | translate }}
+                        </div>
+                      </div>
+                    </a>
+                  </ion-col>
+              </ion-row>
+            </div>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="detail">
+        <ion-card-content style="padding-bottom: 0px;padding: 15px">
+          <ion-card-title class="capitalize" text-left>
+              {{ 'E-mail' | translate }}
+          </ion-card-title>
+          <div style="margin-top: 5px;">
+            <ion-row>
+              <ion-col col-9>
+                <p style="font-size: 18px">
+                    Vishalstationerysuperstore@yahoo.co.in
+                </p>
+              </ion-col>
+              <ion-col col-3>
+                  <a href="mailto:Vishalstationerysuperstore@yahoo.co.in" style="color: #fff">
+                      <div style="float: left; width: 100%;text-align: center;vertical-align: middle;">
+                        <div style="background-color: #2874f0;">
+                            {{ 'E-mail_button' | translate }}
+                        </div>
+                      </div>
+                    </a>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

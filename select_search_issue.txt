@@ -1,0 +1,2 @@
++ ionic-select-searchable@2.10.0
+updated 1 package in 10.191s
