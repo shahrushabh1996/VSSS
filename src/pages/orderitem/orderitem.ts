@@ -30,6 +30,8 @@ export class OrderitemPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   pagination: any;
 
   items: any;
@@ -105,6 +107,7 @@ export class OrderitemPage {
       loading.dismiss();
       this.items = data['Items'];
       this.cart_item = data['Cart_items'];
+      this.wishlist_item = data['Wishlist_items'];
       this.language = data['Language'];
       this.translate.use(this.language);
       this.modify_json();

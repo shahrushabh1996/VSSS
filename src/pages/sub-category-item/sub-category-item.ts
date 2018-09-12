@@ -30,6 +30,8 @@ export class SubCategoryItemPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   pagination: any;
 
   items: any;
@@ -106,6 +108,7 @@ export class SubCategoryItemPage {
       loading.dismiss();
       this.items = data['Items'];
       this.cart_item = data['cart_item'];
+      this.wishlist_item = data['Wishlist_items'];
       this.language = data['Language'];
       this.translate.use(this.language);
       this.modify_json();
@@ -267,6 +270,7 @@ export class SubCategoryItemPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Remove';
+      this.wishlist_item += 1;
     });
   }
 
@@ -286,6 +290,7 @@ export class SubCategoryItemPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Add';
+      this.wishlist_item -= 1;
     });
   }
 

@@ -31,6 +31,8 @@ export class SearchPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   searchTerm: any = '';
 
   language: string = '';
@@ -69,6 +71,7 @@ export class SearchPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.cart_item = data['Cart_items'];
+      this.wishlist_item = data['Wishlist_items'];
       this.language = data['Language'];
       this.translate.use(this.language);
     });

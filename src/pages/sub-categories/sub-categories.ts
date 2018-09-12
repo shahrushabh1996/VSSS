@@ -32,6 +32,8 @@ export class SubCategoriesPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   category = '';
 
   sub_categories: any;
@@ -86,6 +88,7 @@ export class SubCategoriesPage {
         this.sub_categories = data['Sub_categories'];
         this.search_sub_categories = data['Sub_categories'];
         this.cart_item = data['Cart_items'];
+        this.wishlist_item = data['Wishlist_items'];
         this.language = data['Language'];
         this.Loader = 0;
         this.ion_content = '';

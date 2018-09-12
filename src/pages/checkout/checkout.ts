@@ -31,6 +31,8 @@ export class CheckoutPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   items: any;
 
   search_items: any;
@@ -128,6 +130,7 @@ export class CheckoutPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items = data['Items'];
+      this.wishlist_item = data['Wishlist_items'];
       this.language = data['Language'];
       this.Parcel = data['Parcel'] == 'True' ? true : false;
       this.User_data = data['User_data'][0];

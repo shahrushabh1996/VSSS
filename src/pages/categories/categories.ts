@@ -39,6 +39,8 @@ export class CategoriesPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   categories: any;
 
   search_categories: any;
@@ -67,8 +69,6 @@ export class CategoriesPage {
 
   Contact: string = '';
 
-  Wishlist: string = '';
-
   Ledger: string = '';
 
   Outstanding: string = '';
@@ -93,8 +93,8 @@ export class CategoriesPage {
         Platform: this.device.platform === null ? 'Browser' : this.device.platform
       });
       this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
-        console.log(data);
         this.cart_item = data['Cart_items'];
+        this.wishlist_item = data['Wishlist_items'];
         this.categories = data['Categories'];
         this.search_categories = data['Categories'];
         this.language = data['Language'];
@@ -240,13 +240,12 @@ export class CategoriesPage {
   }
 
   user_tab(){
-    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'VSSS_Contact', 'Wishlist', 'Ledger', 'Outstanding', 'Logout']).subscribe(res => {
+    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'VSSS_Contact', 'Ledger', 'Outstanding', 'Logout']).subscribe(res => {
       this.Edit_profile = res.Edit_profile;
       this.Order_history = res.Order_history;
       this.Order_item_history = res.Order_item_history;
       this.Change_password = res.Change_password;
       this.Contact = res.VSSS_Contact;
-      this.Wishlist = res.Wishlist;
       this.Ledger = res.Ledger;
       this.Outstanding = res.Outstanding;
       this.Logout = res.Logout;
@@ -296,11 +295,6 @@ export class CategoriesPage {
                 this.navCtrl.push(this.navCtrl.getActive().component);
               });
             });
-          }
-        },{
-          text: this.Wishlist,
-          handler: () => {
-            this.navCtrl.push('WishlistPage');
           }
         },{
           text: this.Edit_profile,

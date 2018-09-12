@@ -21,9 +21,17 @@
 	</ion-grid>
 	<ion-grid *ngIf="this.Loader != 1"  style=" background-color: #fff;">
 		<ion-row style="background: #2874f0;" class="search_header">
-			<ion-col col-10>
+			<ion-col col-8>
 				<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredCategory()"></ion-searchbar>
 			</ion-col>
+			<ion-col col-2 style="position: relative;" (click)="page_redirect('WishlistPage')">
+				<ion-icon name="heart" style="font-size: 28px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);" > </ion-icon>
+				<div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
+					<li>
+						<a style="background-color: #fdd922;color: #000; font-size: 11px; height: 30px; width: 30px;padding: 5px 4px">{{wishlist_item}}</a>
+					</li>
+				</div>
+		  </ion-col>
 			<ion-col col-2 style="position: relative;" (click)="page_redirect('CheckoutPage')">
 				<ion-icon name="cart" style="font-size: 42px;color: #fff;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"></ion-icon>
 				<div class="list-inline" style="font-size: 42px;color: #fff;position: absolute;top: 10%;left: 70%;transform: translate(-50%, -50%);">
@@ -70,10 +78,10 @@
 				</ion-list>
 			</ion-col>
 		</ion-row>
-		<ion-row style="text-align: center;padding-bottom: 10px">
+		<!--<ion-row style="text-align: center;padding-bottom: 10px">
 			<ion-col style="margin-top: 0px">
 				<p style="font-size: 18px;margin: 0">APP Developed By: <a href="tel:+919429058733">WEBERS INFOTECH</a></p>
 			</ion-col>
-		</ion-row>
+		</ion-row>-->
 	</ion-grid>
 </ion-content>

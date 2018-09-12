@@ -24,6 +24,8 @@ export class SignupPage {
 
   states: any;
 
+  testing: any;
+
   Loader: any = 1;
 
   signup = {
@@ -47,6 +49,8 @@ export class SignupPage {
 
   input_values = [];
 
+  ports = [];
+
   required = {
     name: '',
     mobile: '',
@@ -59,6 +63,11 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController, public headerColor: HeaderColor) {
     this.headerColor.tint('#2874f0');
+    this.ports = [
+      { id: 1, name: 'Tokai' },
+      { id: 2, name: 'Vladivostok' },
+      { id: 3, name: 'Navlakhi' }
+    ];
   }
 
   ionViewDidLoad() {
@@ -71,6 +80,7 @@ export class SignupPage {
         this.states = data.States;
         this.Loader = 0;
     });
+    
   }
 
   portChange(){

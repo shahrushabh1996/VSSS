@@ -28,6 +28,8 @@ export class DetailPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   item_id = '';
 
   item = '';
@@ -129,6 +131,7 @@ export class DetailPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       this.item = data['Detail'];
       this.cart_item = data['Cart_items'];
+      this.wishlist_item = data['Wishlist_items'];
       this.language = data['Language'];
       this.item_name = this.item[0]['English_name'].toLowerCase();
       this.item_gujarati_name = this.item[0]['Gujarati_name'].toLowerCase();
@@ -240,6 +243,7 @@ export class DetailPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.item[0]['Wishlist'] = 'Remove';
+      this.wishlist_item += 1;
     });
   }
 
@@ -259,6 +263,7 @@ export class DetailPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.item[0]['Wishlist'] = 'Add';
+      this.wishlist_item -= 1;
     });
   }
 

@@ -25,6 +25,8 @@ export class HomePage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   pagination: any;
 
   items: any;
@@ -66,8 +68,6 @@ export class HomePage {
   Logout: string = '';
 
   Contact: string = '';
-
-  Wishlist: string = '';
 
   Ledger: string = '';
 
@@ -126,6 +126,7 @@ export class HomePage {
       loading.dismiss();
       this.items = data['Items'];
       this.cart_item = data['cart_item'];
+      this.wishlist_item = data['Wishlist_items'];
       this.customer = data['Customer'];
       this.language = data['Language'];
       this.translate.use(this.language);
@@ -281,6 +282,7 @@ export class HomePage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Remove';
+      this.wishlist_item += 1;
     });
   }
 
@@ -300,6 +302,7 @@ export class HomePage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Add';
+      this.wishlist_item -= 1;
     });
   }
 
@@ -327,13 +330,12 @@ export class HomePage {
   }
 
   user_tab(){
-    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'VSSS_Contact', 'Wishlist', 'Ledger', 'Outstanding', 'Logout']).subscribe(res => {
+    this.translate.get(['Edit_profile', 'Order_history', 'Order_item_history', 'Change_password', 'VSSS_Contact', 'Ledger', 'Outstanding', 'Logout']).subscribe(res => {
       this.Edit_profile = res.Edit_profile;
       this.Order_history = res.Order_history;
       this.Order_item_history = res.Order_item_history;
       this.Change_password = res.Change_password;
       this.Contact = res.VSSS_Contact;
-      this.Wishlist = res.Wishlist;
       this.Ledger = res.Ledger;
       this.Outstanding = res.Outstanding;
       this.Logout = res.Logout;
@@ -383,11 +385,6 @@ export class HomePage {
                 this.navCtrl.push(this.navCtrl.getActive().component);
               });
             });
-          }
-        },{
-          text: this.Wishlist,
-          handler: () => {
-            this.navCtrl.push('WishlistPage');
           }
         },{
           text: this.Edit_profile,

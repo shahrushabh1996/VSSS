@@ -35,6 +35,8 @@ export class CategoryItemPage {
 
   cart_item: any = 0;
 
+  wishlist_item: any = 0;
+
   category = '';
 
   CategoryName: string;
@@ -104,6 +106,7 @@ export class CategoryItemPage {
         this.CategoryName = data['Category'].toLowerCase();
         this.CategoryNameGujarati = data['Category_gujarati'];
         this.cart_item = data['Cart_items'];
+        this.wishlist_item = data['Wishlist_items'];
         this.Loader = 0;
         this.ion_content = '';
     });
@@ -277,6 +280,7 @@ export class CategoryItemPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Remove';
+      this.wishlist_item += 1;
     });
   }
 
@@ -296,6 +300,7 @@ export class CategoryItemPage {
     this.http.post(link, post_data).map(res => res.json()).subscribe(data => {
       loading.dismiss();
       this.items[item]['Wishlist'] = 'Add';
+      this.wishlist_item -= 1;
     });
   }
 
